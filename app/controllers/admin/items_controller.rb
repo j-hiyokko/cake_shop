@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
 
   def index
-    @item = Item.all
+    @items = Item.all
   end
 
   def new
@@ -26,11 +26,11 @@ class Admin::ItemsController < ApplicationController
     item = Item.find(params[:id])
     item.update
   end
-  
+
   private
-  
+
   def item_params
-    params.require(:item).permit(:item_name,:introduction,:price,)
+    params.permit(:item_name,:introduction,:price,:item_image_url,:genre_id,:item_status)
   end
-  
+
 end
