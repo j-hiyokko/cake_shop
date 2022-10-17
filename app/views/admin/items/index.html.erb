@@ -1,1 +1,9 @@
 <h2>admin/items#index</h2>
+
+<h2>商品一覧(管理者用)</h2>
+
+<% @items.each do |item| %>
+    <%= item.item_name %>
+    <%= item.price %>
+    <%= item.item_image%>
+<% end %>
