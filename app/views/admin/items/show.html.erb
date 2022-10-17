@@ -1,1 +1,17 @@
 <h2>admin/items#show</h2>
+
+<div class='container px-5 px-sm-0'>
+    <div class='row'>
+
+        <h2>商品詳細</h2>
+
+        <%= image_tag @item.get_item_image,size: "300x250" %>
+        <%= @item.item_name %>
+        <%= @item.introduction %>
+        <%= @item.price %>円
+        <%= @item.item_status %>
+
+        <%= link_to "編集する",edit_admin_item_path %>
+
+    </div>
+</div>
