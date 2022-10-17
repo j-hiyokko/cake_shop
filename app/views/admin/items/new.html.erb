@@ -1,0 +1,13 @@
+<h2>admin/items#new</h2>
+
+<%= form_with model:@item do |f| %>
+
+  <%= f.label:商品名%>
+  <%= f.text_field :item_name %>
+  <%= f.label:商品説明%>
+  <%= f.text_area :introduction %>
+  <%= f.label:価格%>
+  <%= f.text_field :price %>
+  <%= f.submit :'登録'%>
+
+<% end %>
