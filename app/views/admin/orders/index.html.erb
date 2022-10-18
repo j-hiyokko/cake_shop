@@ -1,0 +1,22 @@
+<h3>注文履歴一覧</h3>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>購入個数</th>
+      <th>注文ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+     <% @orders.each do |oder| %>
+    <tr>
+      <th> <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+      </th>
+      <th><%= order_counts.count %> %></th>
+      <th><%= order_status %></th>
+      <th></th>
+    <% end %>
+    </tr>
+  </tbody>
+</table>
