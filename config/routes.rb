@@ -9,11 +9,14 @@ Rails.application.routes.draw do
 
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: 'pubulic/sessions'
+    sessions: 'public/sessions'
   }
 scope module: :public do
   resources :items, only: [:index,:show]
-  resource :customers, only: [:show,:edit,:update,:cofirm,:withdraw]
+  resource :customers, only: [:show,:cofirm,:withdraw]
+  get 'customer/edit' => 'customers#edit'
+  put 'customer/update' => 'customers#update'
+  patch 'customer/update' => 'customers#update'
   resources :cart_items, only: [:index,:update,:destroy,:destroy_all,:create]
   resources :orders, only: [:new,:confirm,:complete,:create,:index,:show]
   resources :addresses, only: [:index,:edit,:create,:update,:destroy]

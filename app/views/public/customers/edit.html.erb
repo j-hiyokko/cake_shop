@@ -15,7 +15,7 @@
       <% end %>
     </div>
 
-  <%= form_with model: @customer, url: customers_path, method: :patch, local:true do |f| %>
+  <%= form_with model: @customer, url: customer_update_path, local:true do |f| %>
     <div class="form-group row">
       <%= f.label :氏名, class: "col-md-3" %>
       <%= f.text_field :last_name, class: "col-md-2 form-control" %>
