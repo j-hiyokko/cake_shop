@@ -1,9 +1,9 @@
 <h2>admin/items#new</h2>
 
   <h2>商品新規登録ページ</h2>
+  <%= link_to '商品一覧',admin_items_path %>
 
     <%= form_with model:@item,url:admin_items_path do |f| %>
-
       <div class="form-group">
         <%= f.label:商品画像%>
         <%= f.file_field:item_image,accept:"image/*"%>
@@ -33,6 +33,4 @@
       <div class="form-group">
         <%= f.submit :'新規登録'%>
       </div>
-      <% end %>
-
-      <%= link_to '商品一覧へ',admin_items_path %>
+    <% end %>
