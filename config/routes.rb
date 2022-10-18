@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  root to: "homes#top"
-  get "/about" => "homes#about", as: 'about'
-
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -12,6 +9,8 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
 scope module: :public do
+  root to: "homes#top"
+  get "/about" => "homes#about", as: 'about'
   resources :items, only: [:index,:show]
   resource :customers, only: [:show,:edit,:update,:cofirm,:withdraw]
   resources :cart_items, only: [:index,:update,:destroy,:destroy_all,:create]
