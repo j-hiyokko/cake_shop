@@ -25,10 +25,15 @@
                     <% end %>
                     </td>
                     <td><%= item.price %>円</td>
-                    <td><%= item.genre_id %></td>
-                    <td><%= item.item_status %></td>
+                    <td><%= item.genre.genre_name %></td>
+                    <td>
+                        <% if item.item_status == "販売中" %>
+                        <p class="text-success"><%= item.item_status %></p>
+                        <% else %>
+                        <p class="text-black-50"><%= item.item_status %></p>
+                        <% end %>
+                    </td>
                 </tr>
             <% end %>
             </tbody>
         </table>
-        
