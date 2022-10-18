@@ -1,42 +1,44 @@
-<h2>admin/items#index</h2>
+<div class="container px-5 px-sm-0">
+  <div class="row">
 
-        <h2>商品一覧</h2>
-        <%= link_to'新規登録',new_admin_item_path %>
+      <h2>商品一覧</h2>
+      <%= link_to'新規登録',new_admin_item_path %>
 
-        <table class='table table-hover table-inverse'>
-            <thead>
-                <tr>
-                  <th>商品ID</th>
-                  <th>商品名</th>
-                  <th>税抜価格</th>
-                  <th>ジャンル</th>
-                  <th>ステータス</th>
-                  <th colspan="3"></th>
-                </tr>
-            </thead>
+      <table class='table table-hover table-inverse'>
+        <thead>
+            <tr>
+                <th>商品ID</th>
+                <th>商品名</th>
+                <th>税抜価格</th>
+                <th>ジャンル</th>
+                <th>ステータス</th>
+                <th colspan="3"></th>
+            </tr>
+        </thead>
 
-            <tbody>
+        <tbody>
             <% @items.each do |item| %>
-                <tr>
-                    <td><%= item.id %></td>
-                    <td>
+            <tr>
+                <td><%= item.id %></td>
+                <td>
                     <%= link_to admin_item_path(item.id) do %>
                     <%= item.item_name %>
                     <% end %>
-                    </td>
-                    <td><%= item.price %>円</td>
-                    <td><%= item.genre.genre_name %></td>
-                    <td>
-                        <% if item.item_status == "販売中" %>
-                        <p class="text-success"><%= item.item_status %></p>
-                        <% else %>
-                        <p class="text-black-50"><%= item.item_status %></p>
-                        <% end %>
-                    </td>
-                </tr>
+                </td>
+                <td><%= item.price %>円</td>
+                <td><%= item.genre.genre_name %></td>
+                <td>
+                    <% if item.item_status == "販売中" %>
+                    <p class="text-success"><%= item.item_status %></p>
+                    <% else %>
+                    <p class="text-black-50"><%= item.item_status %></p>
+                    <% end %>
+                </td>
+            </tr>
             <% end %>
-
-            </tbody>
+        </tbody>
         </table>
+        <div><%= paginate @items %></div>
 
-        <%= paginate @items %>
+    </div>
+</div>
