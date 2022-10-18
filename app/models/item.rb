@@ -9,4 +9,6 @@ class Item < ApplicationRecord
     item_image#.variant(resize_to_limit: [width, height]).processed
   end
 
+  enum item_status:{ 販売停止:0,販売中:1 }
+
 end
