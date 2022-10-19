@@ -1,6 +1,13 @@
 class Item < ApplicationRecord
 
   belongs_to:genre
+  has_many:cart_items
+
+  validates :genre_id, presence: true
+  validates :item_name, presence: true
+  validates :price, presence: true
+  validates :introduction, presence: true
+  validates :item_status, presence: true
 
   has_one_attached :item_image
 
@@ -13,7 +20,7 @@ class Item < ApplicationRecord
   end
 
   def add_tax_price
-    (self.price * 1.08).round
+    (price * 1.08).floor
   end
 
   enum item_status:{ 販売停止中:0,販売中:1 }

@@ -12,7 +12,16 @@
       <%= image_tag @item.get_item_image,size: "300x250" %>
       <%= @item.item_name %>
       <%= @item.introduction %>
-      ¥<%= @item.add_tax_price.to_s(:delimited) %>(税込)
+      ¥<%= @item.add_tax_price %>(税込)
 
-      <%= link_to "カートに入れる",items_path %>
+      <% if @item.item_status == "販売中" %>
+      <%= form_with model:@cart_items do |f| %>
+      <%= f.hidden_field :item_id,:value => @item.id %>
+      <%= f.select :quantity,*[1..10],include_blank:'個数選択' %>
+      <%= f.submit :'カートに入れる',class:"btn btn-primary" %>
+      <% end %>
+      <% else %>
+      <p>販売停止中</p>
+      <% end %>
+
     </div>
