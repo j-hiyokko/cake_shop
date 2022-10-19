@@ -27,10 +27,16 @@ class Public::OrdersController < ApplicationController
   
   def complete
   end
- 
+  def index
+    @orders = Order.where(customer_id: current_customer.id)
+  end
+  def show
+    @order = Order.find(params[:id])
+  end
+  
+  private
+  
   def order_params
     params.require(:order).permit(:payment,:postcode,:address,:address_name,:customer_id,:billing_amount,:order_status,:postage)
   end
-
 end
-
