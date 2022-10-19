@@ -1,8 +1,9 @@
 <div class="container">
-<h5>ログイン</h5>
   <div class="row">
     <div class="col-1"></div>
-    <div class="col-10">
+    <div class="col-8">
+
+    <h5>ログイン</h5>
     <p>会員の方はこちらからログイン</p>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -18,13 +19,11 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "ログイン", 'btn btn-primary' %>
+        <%= f.submit "ログイン", class: 'btn btn-primary' %>
       </div>
     <% end %>
 
     <%= link_to "こちら", new_customer_registration_path %> からログインしてください。
-    <%= render "public/shared/links" %>
     </div>
-    <div class="col-1"></div>
   </div>
 </div>
