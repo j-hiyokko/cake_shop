@@ -13,7 +13,7 @@
         <tbody>
           <% @order_detailes.each do |order_detailes| %>
           <tr>
-            <th scope="row"><%= attachment_image_tag(order_detailes.item, :image,size: "300x217", fallback: "no_image.jpg") %><%= order_detailes.item.item_name %></th>
+            <th scope="row"><%= order_detailes.item.item_name %></th>
             <td><%= order_detailes.item.price %></td>
             <td><%= order_detailes.quantity %></td>
             <td><%= order_detailes.item.price * order_detailes.quantiy.to_i %></td>
