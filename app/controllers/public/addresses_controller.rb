@@ -23,10 +23,9 @@ class Public::AddressesController < ApplicationController
   def update
     @address = Address.find(params[:id])
     if @address.update(address_params)
-    flash[:success] = "登録情報を編集しました。"
       redirect_to action: :index
     else
-      flash[:alert] = "もう一度入力してください。"
+      @address = Address.find(params[:id])
       render :edit
     end
   end
