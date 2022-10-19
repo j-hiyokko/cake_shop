@@ -12,7 +12,7 @@
       <%= image_tag @item.get_item_image,size: "300x250" %>
       <%= @item.item_name %>
       <%= @item.introduction %>
-      ¥<%= @item.add_tax_price %>(税込)
+      ¥<%= @item.add_tax_price.to_s(:delimited) %>(税込)
 
       <% if @item.item_status == "販売中" %>
       <%= form_with model:@cart_items do |f| %>
