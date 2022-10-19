@@ -1,59 +1,67 @@
 <div class="row">
-    <h2>注文情報入力</h2>
-    <div class="col-xs-6" style="margin-top: 50px;">
-        <%= form_with model: @order, url: new_order_path, method: :get, local: true do |f| %>
-        <table class="table">
-          <tbody>
-            <tr>
-              <th scope="row">支払方法</th>
-              <td>
-                <div class="radio">
+  <h2>注文情報入力</h2>
+  <div class="col-xs-6" style="margin-top: 50px;">
+    <%= form_with model: @order, url: confirm_order_path, method: :get, local: true do |f| %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">支払方法</th>
+            <td>
+              <div class="radio">
+                <p>
                   <%= f.radio_button :payment, "0" %>
                   <label class="payment-label">クレジットカード</label>
+                </p>
+                <p>
                   <%= f.radio_button :payment, "1" %>
                   <label class="payment-label">銀行振込</label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">お届け先</th>
-              <td>
-                <div class="radio">
-                  <%= radio_button_tag(:selected_address, :radio1) %>
-                  <%= label_tag(:selected_address, "ご自身の住所") %>
-                  <p><%= @customer.postcode %><%= @customer.address %></p>
-                  <p><%= @customer.first_name %><%= @customer.last_name %></p>
-                </div>
-                <div class="radio">
+                </p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">お届け先</th>
+            <td>
+              <div class="radio">
+                <%= radio_button_tag(:selected_address, :radio1) %>
+                <%= label_tag(:selected_address, "ご自身の住所") %>
+                <p><%= @customer.postcode %><%= @customer.address %></p>
+                <p><%= @customer.first_name %><%= @customer.last_name %></p>
+              </div>
+              <div class="radio">
+                <p>
                   <%= radio_button_tag(:selected_address, :radio2) %>
                   <%= label_tag(:selected_address, "登録済住所から選択") %>
-                  <p><!--配送先は会員と紐付けられているが注文とは紐付けられていないためどうすればいいのか -->
-                            <%= f.collection_select :address_for_order, @addresses, :id, :address %>
-                  </p>
-                </div>
-                <td>
+                    <!--配送先は会員と紐付けられているが注文とは紐付けられていないためどうすればいいのか -->
+                  <%= f.collection_select :customer_id, @addresses, :id, :full_adresses %>
+                </p>
+              </div>
+              <div class="radio">
+                <p>
                   <%= radio_button_tag(:selected_address, :radio3) %>
                   <%= label_tag(:selected_address, "新しいお届け先") %>
-                  <tr>
-                    <th><label class="postal-code-label">郵便番号(ハイフンなし)</label></th>
-                    <td><%= f.text_field :postcode, autofocus: true, class:""%><td>
-                  </tr>
-                  <tr>
-                    <th><label class="address-label">住所</label></th>
-                    <td><%= f.text_field :address, autofocus: true, class:"", size:"60*60"%></td>
-                  </tr>
-                  <tr>
-                    <th><label class="address-label">宛名</label></th>
-                    <td><%= f.text_field :address_name, autofocus: true, class:"", size:"30*30" %></td>
-                  </tr>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        <div class="col-xs-offset-5">
-            <!--submit-->
+                </p>
+                <tr>
+                  <th><label class="postal-code-label">郵便番号(ハイフンなし)</label></th>
+                  <td><%= f.text_field :postcode, autofocus: true, class:""%><td>
+                </tr>
+                <tr>
+                  <th><label class="address-label">住所</label></th>
+                  <td><%= f.text_field :address, autofocus: true, class:"", size:"60*60"%></td>
+                </tr>
+                <tr>
+                  <th><label class="address-label">宛名</label></th>
+                  <td><%= f.text_field :address_name, autofocus: true, class:"", size:"30*30" %></td>
+                </tr>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="col-xs-offset-5">
+        <!--submit-->
         <%= f.submit "注文確認画面に進む", class:"btn btn-primary" %>
-        </div>
-        <% end %>
-    </div>
+      </div>
+    <% end %>
+  </div>
 </div>

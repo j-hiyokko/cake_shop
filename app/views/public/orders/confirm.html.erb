@@ -11,12 +11,12 @@
           </tr>
         </thead>
         <tbody>
-          <% @order_detailes.each do |order_detailes| %>
+          <% @cart_items.each do |cart_items| %>
           <tr>
-            <th scope="row"><%= order_detailes.item.item_name %></th>
-            <td><%= order_detailes.item.price %></td>
-            <td><%= order_detailes.quantity %></td>
-            <td><%= order_detailes.item.price * order_detailes.quantiy.to_i %></td>
+            <th scope="row"><%= image_tag @item.get_item_image,size: "300x250" %><%= cart_items.item.item_name %></th>
+            <td><%= cart_items.item.price %></td>
+            <td><%= cart_items.quantity %></td>
+            <td><%= cart_items.item.price * cart_items.quantiy.to_i %></td>
           </tr>
           <% end %>
         </tbody>

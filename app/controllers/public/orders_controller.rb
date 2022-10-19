@@ -1,16 +1,15 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
-    @orders = current_customer.order_detailes
     @customer = Customer.find(current_customer.id)
     @addresses = @customer.addresses
   end
-  
+
   def confirm
     @orders = current_customer.orders
-    @order_detailes = current_customer.order_detailes
+    @cart_items = current_customer.cart_items.all
     @order.postage = 800
-    @sum = @order_detailes.sum{order_detailes.item.price * order_detailes.quantiy.to_i}
+    @sum = @cart_items.sum{cart_items.item.price * cart_items.quantiy.to_i}
     @order.billing_amount = @sum + @order.postage
     @order = Order.new(order_params)
     if params[:selected_address] == "radio1"
@@ -24,18 +23,17 @@ class Public::OrdersController < ApplicationController
       @order.save
     end
   end
-  
+
   def complete
   end
   def index
     @orders = Order.where(customer_id: current_customer.id)
   end
   def show
-    @order = Order.find(params[:id])
   end
-  
+
   private
-  
+
   def order_params
     params.require(:order).permit(:payment,:postcode,:address,:address_name,:customer_id,:billing_amount,:order_status,:postage,:image)
   end
