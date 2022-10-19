@@ -1,4 +1,7 @@
 class Item < ApplicationRecord
+
+  belongs_to:genre
+
   has_one_attached :item_image
 
   def get_item_image# (width, height)
@@ -9,6 +12,10 @@ class Item < ApplicationRecord
     item_image#.variant(resize_to_limit: [width, height]).processed
   end
 
-  enum item_status:{ 販売停止:0,販売中:1 }
+  def add_tax_price
+    (self.price * 1.08).round
+  end
+
+  enum item_status:{ 販売停止中:0,販売中:1 }
 
 end

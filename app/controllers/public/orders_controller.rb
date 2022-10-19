@@ -10,6 +10,7 @@ class Public::OrdersController < ApplicationController
       redirect_to book_path(@book)
   end
   def index
+    @orders = Order.where(customer_id: current_customer.id)
   end
   def show
     @order = Order.find(params[:id])

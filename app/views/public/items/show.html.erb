@@ -1,8 +1,18 @@
-<h2>items#show</h2>
+ <div class="container px-5 px-sm-0">
+  <div class="row">
 
-  <%= image_tag @item.get_item_image,size: "300x250" %>
-  <%= @item.item_name %>
-  <%= @item.introduction %>
-  ¥<%= @item.price %>(税込)
+    <div class='col-md-3'>
+      <p>ジャンル検索</p>
+      <% @genres.each do |genre| %>
+      <%= genre.genre_name %><br>
+      <% end %>
+    </div>
 
-  <%= link_to "カートに入れる",items_path %>
+    <div class='col-md-9'>
+      <%= image_tag @item.get_item_image,size: "300x250" %>
+      <%= @item.item_name %>
+      <%= @item.introduction %>
+      ¥<%= @item.add_tax_price.to_s(:delimited) %>(税込)
+
+      <%= link_to "カートに入れる",items_path %>
+    </div>
