@@ -11,12 +11,12 @@
           </tr>
         </thead>
         <tbody>
-          <% @cart_items.each do |cart_item| %>
+          <% @order_detailes.each do |order_detailes| %>
           <tr>
-            <th scope="row"><%= attachment_image_tag(cart_item.item, :image,size: "300x217", fallback: "no_image.jpg") %><%= cart_item.item.name %></th>
-            <td><%= cart_item.item.price %></td>
-            <td><%= cart_item.amount %></td>
-            <td><%= cart_item.item.price * 1.1 * cart_item.amount.to_i %></td>
+            <th scope="row"><%= attachment_image_tag(order_detailes.item, :image,size: "300x217", fallback: "no_image.jpg") %><%= order_detailes.item.item_name %></th>
+            <td><%= order_detailes.item.price %></td>
+            <td><%= order_detailes.quantity %></td>
+            <td><%= order_detailes.item.price * order_detailes.quantiy.to_i %></td>
           </tr>
           <% end %>
         </tbody>
@@ -35,7 +35,7 @@
             </tr>
             <tr>
               <td>請求合計</td>
-              <td><%= @sum + order.postage %></td>
+              <td><%= @order.billing_amount %></td>
             </tr>
           </tbody>
         </table>
@@ -44,7 +44,7 @@
 </div>
 <h3>支払方法<%= (@order.payment == 0) ? "クレジットカード" : "銀行振り込み" %></h3>
 <h3>お届け先<%= @order.address %></h3>
-<%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+<%= form_with model: @order, url: orders_path, method: :post do |f| %>
 <!--create確認用-->
 <%= f.hidden_field :customer_id %>
 <%= f.hidden_field :postcode %>

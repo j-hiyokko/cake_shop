@@ -27,11 +27,10 @@
                 <div class="radio">
                   <%= radio_button_tag(:selected_address, :radio2) %>
                   <%= label_tag(:selected_address, "登録済住所から選択") %>
-                  <p>
+                  <p><!--配送先は会員と紐付けられているが注文とは紐付けられていないためどうすればいいのか -->
                             <%= f.collection_select :address_for_order, @addresses, :id, :address %>
                   </p>
                 </div>
-                <th scope="row">お届け先</th>
                 <td>
                   <%= radio_button_tag(:selected_address, :radio3) %>
                   <%= label_tag(:selected_address, "新しいお届け先") %>
