@@ -20,11 +20,11 @@
       </td>
       <td><%= customer.email %></td>
 
-      <!--% if customer.user_status == false %>
+      <% if customer.user_status == "true" %>
         <td>有効</td>
-      < % else %>
+      <% else customer.user_status == "false" %>
         <td>退会</td>
-      < % end %-->
+      <% end %>
     </tr>
     <% end %>
   </table>
