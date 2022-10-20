@@ -1,7 +1,8 @@
 class Item < ApplicationRecord
 
+  belongs_to:order
   belongs_to:genre
-  has_many:cart_items
+  has_many:cart_items,dependent: :destroy
 
   validates :genre_id, presence: true
   validates :item_name, presence: true

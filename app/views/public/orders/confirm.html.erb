@@ -14,12 +14,10 @@
           <% total = 0 %>
           <% @cart_items.each do |cart_items| %>
           <tr>
-            <th scope="row"><%= image_tag @item.get_item_image,size: "300x250" %><%= cart_items.item.item_name %></th>
-            <td><%= (cart_item.item.price*1.08).to_i %></td>
+            <td scope="row"><%= image_tag cart_items.item.get_item_image,size: "100x80" %><%= cart_items.item.item_name %></td>
+            <td><%= cart_items.item.add_tax_price.to_s(:delimited) %></td>
             <td><%= cart_items.quantity %></td>
-            <td><% subtotal = ((cart_item.item.price*cart_item.quantity)*1.08).to_i %></td>
-            <td><%=subtotal %></td>
-            <td></td> <% total += (cart_item.item.price*cart_item.quantity)*1.08 %></td>
+            <td><%= cart_items.subtotal.round.to_s(:delimited) %></td>
           </tr>
           <% end %>
         </tbody>
@@ -31,11 +29,11 @@
               <% @order.postage = 800 %>
                 <tr><th class="table-secondary">送料</th><td><%= @order.postage %></td></tr>
             <tr>
-              <tr><th class="table-secondary">商品合計</th><td><%= total.to_i %></td></tr>
+              <tr><th class="table-secondary">商品合計</th><td><%= @subtotal.round.to_s(:delimited) %></td></tr>
             </tr>
             <tr>
-              <% @order.billing_amount = @order.postage + total.to_i %>
-                <tr><th class="table-secondary">請求金額</th><td><%= @order.billing_amount %></td></tr>
+              <% @order.billing_amount = @order.postage.to_i + @subtotal.to_i %>
+                <tr><th class="table-secondary">請求金額</th><td><%= @order.billing_amount.round.to_s(:delimited) %></td></tr>
             </table>
             </tr>
           </tbody>
