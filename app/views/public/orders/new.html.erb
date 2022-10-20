@@ -41,15 +41,15 @@
                 </p>
                 <tr>
                   <td><%= f.label :postcode, "郵便番号(ハイフンなし)" %></td>
-                  <td><%= f.text_field :postcode, autofocus: true, class:""%><td>
+                  <td><%= f.text_field :postcode, autofocus: true,class:"",placeholder:"0000000"%><td>
                 </tr>
                 <tr>
                   <td><%= f.label :address, "住所" %></td>
-                  <td><%= f.text_field :address, autofocus: true, class:"", size:"60*60"%></td>
+                  <td><%= f.text_field :address, autofocus: true, class:"", placeholder:"東京都渋谷区代々木神園町0-0",size:"60*60"%></td>
                 </tr>
                 <tr>
-                  <td><%= f.label :address_name, "宛名" %></td> 
-                  <td><%= f.text_field :address_name, autofocus: true, class:"", size:"30*30" %></td>
+                  <td><%= f.label :address_name, "宛名" %></td>
+                  <td><%= f.text_field :address_name, autofocus: true,class:"",placeholder:"令和道子", size:"30*30" %></td>
                 </tr>
               </div>
             </td>

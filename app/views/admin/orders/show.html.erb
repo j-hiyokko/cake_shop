@@ -7,7 +7,7 @@
 
   <tr>
     <th>注文日</th>
-    <td> <%= order.created_at.strftime('%Y/%m/%d') %></td>
+    <td> <%= @order.created_at.strftime('%Y/%m/%d') %></td>
   </tr>
 
   <tr>
@@ -32,7 +32,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @orders.each do |oder| %>
+    <% @orders.each do |order| %>
       <tr>
         <td>%= order.item_name %></td>
         <td><%= order.price %></td>
@@ -43,4 +43,4 @@
 </table>
 <%= @order.total_amount %>
 <%= @order.postage %>
-<%= @order.orderbilling_amount %>
+<%= @order.billing_amount %>
