@@ -34,11 +34,11 @@ scope module: :public do
 end
 
 namespace :admin do
-  get "/" => "homes#top"
+  get "/" => "orders#index"
   resources :items, only: [:index,:new,:create,:show,:edit,:update]
   resources :genres, only: [:index,:create,:edit,:update,:destroy]
   resources :customers, only: [:index,:show,:edit,:update]
-  resources :orders, only: [:show,:update]
+  resources :orders, only: [:show,:update,:index]
   resources :order_detailes, only: [:update]
 end
 
