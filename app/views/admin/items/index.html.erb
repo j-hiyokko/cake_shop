@@ -25,13 +25,13 @@
                     <%= item.item_name %>
                     <% end %>
                 </td>
-                <td><%= item.price %>円</td>
+                <td><%= item.price.to_s(:delimited) %>円</td>
                 <td><%= item.genre.genre_name %></td>
                 <td>
-                    <% if item.item_status == "販売中" %>
-                    <p class="text-success"><%= item.item_status %></p>
+                    <% if item.item_status == "available" %>
+                    <p class="text-success"><%= item.item_status_i18n %></p>
                     <% else %>
-                    <p class="text-black-50"><%= item.item_status %></p>
+                    <p class="text-black-50"><%= item.item_status_i18n %></p>
                     <% end %>
                 </td>
             </tr>

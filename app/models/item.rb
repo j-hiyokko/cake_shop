@@ -23,6 +23,6 @@ class Item < ApplicationRecord
     (price * 1.08).floor
   end
 
-  enum item_status:{ 販売停止中:0,販売中:1 }
+  enum item_status: { available:1,unavailable:0 }
 
 end
