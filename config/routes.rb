@@ -37,7 +37,7 @@ namespace :admin do
   resources :genres, only: [:index,:create,:edit,:update,:destroy]
   resources :customers, only: [:index,:show,:edit,:update]
   resources :orders, only: [:show,:update]
-  resources :products, only: [:update]
+  resources :order_detailes, only: [:update]
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
