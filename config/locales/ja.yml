@@ -2,6 +2,5 @@ ja:
     enums:
       item:
         item_status:
-          unavailable: "販売停止"
           available: "販売中"
-          
+          unavailable: "販売停止中"
