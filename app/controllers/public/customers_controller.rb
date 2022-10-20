@@ -19,12 +19,12 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-  #def withdraw
-    #@customer = current_customer
-    #@customer.update(user_status: false)
-    #reset_session
-    #redirect_to root_path
-  #end
+  def withdraw
+    @customer = current_customer
+    @customer.update(user_status: "false")
+    reset_session
+    redirect_to root_path
+  end
 
   private
 

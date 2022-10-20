@@ -46,11 +46,11 @@
     <%= f.label :メールアドレス, class: "col-md-3" %>
     <%= f.email_field :email, class: "col-md-5 form-control" %>
   </div>
-  <!--div class="form-group row">
-    < %= f.label :会員ステータス, class: "col-md-3" %>
-    <label>< %= f.radio_button :user_status?, false, checked: true %>有効</label>
-    <label class="ml-3">< %= f.radio_button :user_status, true %>退会</label>
-  </div-->
+  <div class="form-group row">
+    <%= f.label :会員ステータス, class: "col-md-3" %>
+    <label><%= f.radio_button :user_status?, "true", checked: "false" %>有効</label>
+    <label class="ml-3"><%= f.radio_button :user_status, "false" %>退会</label>
+  </div>
 
   <div class="form-group row">
     <%= f.submit "変更を保存", class: "btn btn-success col-md-2 offset-3" %>
