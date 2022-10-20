@@ -8,6 +8,8 @@ class Customer < ApplicationRecord
   has_many :addresses, dependent: :destroy
   has_many :orders, dependent: :destroy
 
+  enum user_status: { false: 0, true: 1 }
+
   with_options presence: true, format: { with:/\A[ぁ-んァ-ン一-龥]/ } do
     validates :first_name
     validates :last_name

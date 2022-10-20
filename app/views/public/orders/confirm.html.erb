@@ -11,12 +11,15 @@
           </tr>
         </thead>
         <tbody>
-          <% @cart_items.each do |cart_item| %>
+          <% total = 0 %>
+          <% @cart_items.each do |cart_items| %>
           <tr>
-            <th scope="row"><%= attachment_image_tag(cart_item.item, :image,size: "300x217", fallback: "no_image.jpg") %><%= cart_item.item.name %></th>
-            <td><%= cart_item.item.price %></td>
-            <td><%= cart_item.amount %></td>
-            <td><%= cart_item.item.price * 1.1 * cart_item.amount.to_i %></td>
+            <th scope="row"><%= image_tag @item.get_item_image,size: "300x250" %><%= cart_items.item.item_name %></th>
+            <td><%= (cart_item.item.price*1.08).to_i %></td>
+            <td><%= cart_items.quantity %></td>
+            <td><% subtotal = ((cart_item.item.price*cart_item.quantity)*1.08).to_i %></td>
+            <td><%=subtotal %></td>
+            <td></td> <% total += (cart_item.item.price*cart_item.quantity)*1.08 %></td>
           </tr>
           <% end %>
         </tbody>
@@ -25,33 +28,33 @@
       <div class="col-md-5">
         <table class="table">
           <tbody>
+              <% @order.postage = 800 %>
+                <tr><th class="table-secondary">送料</th><td><%= @order.postage %></td></tr>
             <tr>
-              <td>送料</td>
-              <td><%= @order.postage %></td>
+              <tr><th class="table-secondary">商品合計</th><td><%= total.to_i %></td></tr>
             </tr>
             <tr>
-            <td>商品合計</td>
-              <td><%= @sum %></td>
-            </tr>
-            <tr>
-              <td>請求合計</td>
-              <td><%= @sum + order.postage %></td>
+              <% @order.billing_amount = @order.postage + total.to_i %>
+                <tr><th class="table-secondary">請求金額</th><td><%= @order.billing_amount %></td></tr>
+            </table>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 </div>
-<h3>支払方法<%= (@order.payment == 0) ? "クレジットカード" : "銀行振り込み" %></h3>
-<h3>お届け先<%= @order.address %></h3>
-<%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+<h3>支払方法<%= @order.payment %></h3>
+<h3>お届け先<%= @order.address %><%= @order.postcode %><br>
+            <%= @order.address_name %></h3>
+<%= form_with model: @order,url: orders_path,method: :post do |f| %>
 <!--create確認用-->
 <%= f.hidden_field :customer_id %>
 <%= f.hidden_field :postcode %>
 <%= f.hidden_field :address %>
 <%= f.hidden_field :address_name %>
 <%= f.hidden_field :postage %>
-<%= f.hidden_field :billing_amount, :value => @sum+800 %>
+<%= f.hidden_field :billing_amount%>
 <%= f.hidden_field :payment %>
+<%= f.hidden_field :order_status %>
 <%= f.submit "注文を確定する", class:"btn btn-success col-md-3" %>
 <% end %>
