@@ -22,14 +22,15 @@
         <%= f.submit "ログイン", class: 'btn btn-primary' %>
       </div>
     <% end %>
-
-    <%= link_to "こちら", new_customer_registration_path %> からログインしてください。
     </div>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="col-9"></div>
+    <div class="col-9">
+      <h5>会員登録がお済でない方</h5>
+      <%= link_to "こちら", new_customer_registration_path %> からログインしてください。
+    </div>
   </div>
 </div>
