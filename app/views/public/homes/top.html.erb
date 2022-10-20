@@ -32,7 +32,9 @@
           <div class="row">
             <% @items.each do |item| %>
               <div class='col-md-2'>
+                <%= link_to item_path(item.id) do %>
                 <%= image_tag item.get_item_image,size: "100x80" %>
+                <% end %>
                 <%= item.item_name %>
                 ¥<%= item.add_tax_price.to_s(:delimited) %>
               </div>
