@@ -10,8 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_19_102450) do
-
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -63,7 +61,6 @@ ActiveRecord::Schema.define(version: 2022_10_19_102450) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "item_id", null: false
-    t.integer "user_id", null: false
     t.integer "quantity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
