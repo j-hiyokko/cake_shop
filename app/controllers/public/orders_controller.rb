@@ -6,22 +6,32 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @orders = current_customer.orders
-    @cart_items = current_customer.cart_items.all
-    @order.postage = 800
-    @sum = @cart_items.sum{cart_items.item.price * cart_items.quantiy.to_i}
-    @order.billing_amount = @sum + @order.postage
     @order = Order.new(order_params)
-    if params[:selected_address] == "radio1"
+    @cart_items = current_customer.cart_items.all
+    @order.customer_id = current_customer.id
+    if params[:order][:address_option] == "0"
       @order.address = current_customer.address
-      @order.postal_code = current_customer.postcode
-      @order.name = current_customer.last_name + current_customer.first_name
-    elsif params[:selected_address] == "radio2"
-      @order.address = Address.find(params[:order][:address_for_order])
+      @order.postcode = current_customer.postcode
+      @order.address_name = current_customer.last_name + current_customer.first_name
+    elsif params[:order][:address_option] == "1"
+      ship = Address.find(params[:order][:customer_id])
+      @order.address = ship.postcode
+      @order.postcode = ship.address
+      @order.address_name = ship.address_name
+    elsif params[:order][:address_option] == "2"
+      @order.address = params[:order][:address]
+      @order.postcode = params[:order][:postcode]
+      @order.address_name = params[:order][:address_name]
     else
-      @order.address = Order.new
-      @order.save
+       render 'new'
     end
+  end
+
+  def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.save
+    redirect_to complete_order_path
   end
 
   def complete

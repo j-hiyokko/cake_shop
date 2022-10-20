@@ -17,9 +17,9 @@ scope module: :public do
   put 'customer/update' => 'customers#update'
   patch 'customer/update' => 'customers#update'
   resources :cart_items, only: [:index,:update,:destroy,:destroy_all,:create]
-  resources :orders, only: [:new,:create,:index,:show]
   post 'orders/confirm'=>'orders#confirm', as: 'confirm_order'
   get 'orders/complete'=>'orders#complete',as: 'complete_order'
+  resources :orders, only: [:new,:create,:index,:show]
   resources :addresses, only: [:index,:edit,:create,:update,:destroy]
 end
 

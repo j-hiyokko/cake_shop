@@ -3,6 +3,9 @@ class Order < ApplicationRecord
   has_many :items, through: :order_details,dependent: :destroy
   belongs_to :customer
   has_one_attached :image
+  validates :address, presence: true
+  validates :address_name, presence: true
+  validates :postcode, presence: true
 
 
   def full_adresses
@@ -16,5 +19,5 @@ class Order < ApplicationRecord
      "発送準備中":3,
      "発送済み":4
   }
-  enum payment: ["クレジットカード", "銀行振込"]
+  enum payment: { クレジットカード: 0, 銀行振込: 1 }
 end
