@@ -13,4 +13,29 @@
   <body>
     <%= yield %>
   </body>
+
+  <footer class="border border-dark pt-4 pb-4">
+    <div class="container">
+      <div class="row no-gutters">
+        <div class="col-5">
+          <p>ながのCAKE</p>
+        </div>
+        <div class="col-md-4">
+          <ul class="p-0 list-unstyled">
+            <li>
+              <a>instagram</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-2 offset-1">
+          <% if  admin_signed_in? %>
+            <p></p>
+          <% else %>
+            <%= link_to "管理者", new_admin_session_path, class: "btn btn-outline-light" %>
+          <% end %>
+          </li>
+        </div>
+      </div>
+    </div>
+  </footer>
 </html>
