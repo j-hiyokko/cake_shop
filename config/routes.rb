@@ -27,8 +27,9 @@ scope module: :public do
       delete 'destroy_all'
     end
   end
-
-  resources :orders, only: [:new,:confirm,:complete,:create,:index,:show]
+  post 'orders/confirm'=>'orders#confirm', as: 'confirm_order'
+  get 'orders/complete'=>'orders#complete',as: 'complete_order'
+  resources :orders, only: [:new,:create,:index,:show]
   resources :addresses, only: [:index,:edit,:create,:update,:destroy]
 end
 
