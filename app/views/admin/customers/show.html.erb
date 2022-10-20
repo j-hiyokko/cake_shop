@@ -34,14 +34,14 @@
           <th>メールアドレス</th>
           <td><%= @customer.email %></td>
         </tr>
-        <!--tr>
+        <tr>
           <th>会員ステータス</th>
-          < % if @customer.user_status == false %>
+          <% if @customer.user_status == "true" %>
             <td>有効</td>
-          < % else %>
+          <% else @customer.user_status == "false" %>
             <td>退会</td>
-          < % end %>
-        </tr-->
+          <% end %>
+        </tr>
       </table>
     </div>
   </div>

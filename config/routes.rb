@@ -12,15 +12,21 @@ scope module: :public do
   root to: "homes#top"
   get "/about" => "homes#about", as: 'about'
   resources :items, only: [:index,:show]
-  resource :customers, only: [:show,:cofirm,:withdraw]
+  resource :customers, only: [:show,:cofirm]
   get 'customer/edit' => 'customers#edit'
   put 'customer/update' => 'customers#update'
   patch 'customer/update' => 'customers#update'
+
+  get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+  patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
+ 
+
   resources :cart_items, only: [:index,:update,:destroy,:destroy_all,:create] do
     collection do
       delete 'destroy_all'
     end
   end
+
   resources :orders, only: [:new,:confirm,:complete,:create,:index,:show]
   resources :addresses, only: [:index,:edit,:create,:update,:destroy]
 end
