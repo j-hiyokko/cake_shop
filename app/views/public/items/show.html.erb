@@ -15,13 +15,13 @@
       ¥<%= @item.add_tax_price.to_s(:delimited) %>(税込)
 
       <% if @item.item_status == "available" %>
-      <%= form_with model:@cart_items do |f| %>
-      <%= f.hidden_field :item_id,:value => @item.id %>
-      <%= f.select :quantity,*[1..10],prompt:'個数選択' %>
-      <%= f.submit :'カートに入れる',class:"btn btn-primary" %>
-      <% end %>
+        <%= form_with model:@cart_items do |f| %>
+        <%= f.hidden_field :item_id,:value => @item.id %>
+        <%= f.select :quantity,*[1..10],prompt:'個数選択' %>
+        <%= f.submit :'カートに入れる',class:"btn btn-primary" %>
+        <% end %>
       <% else %>
-      <p>販売停止中</p>
+        <p>販売停止中</p>
       <% end %>
 
     </div>

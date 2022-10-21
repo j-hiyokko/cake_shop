@@ -9,6 +9,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items.all
     @order.customer_id = current_customer.id
+    @subtotal = @cart_items.inject(0){|sum,item| sum + item.subtotal }
     if params[:order][:address_option] == "0"
       @order.address = current_customer.address
       @order.postcode = current_customer.postcode
