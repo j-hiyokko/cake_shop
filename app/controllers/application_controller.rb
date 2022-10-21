@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def after_sign_up_path_for(resource)
+    customers_path
+  end
+
   def after_sign_in_path_for(resource)
     if resource.is_a?(Admin)
       admin_path
@@ -14,10 +18,6 @@ class ApplicationController < ActionController::Base
       new_admin_session_path
     else
       root_path
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/develop
     end
   end
 
