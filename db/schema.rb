@@ -10,6 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2022_10_19_103447) do
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -97,7 +99,6 @@
     t.integer "genre_id", null: false
     t.string "item_name", null: false
     t.integer "price", null: false
-    t.text "item_image_url", null: false
     t.text "introduction", null: false
     t.integer "item_status", null: false
     t.datetime "created_at", precision: 6, null: false
