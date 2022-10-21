@@ -32,7 +32,22 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
-    redirect_to complete_order_path
+    redirect_to complete_order_path@order = Order.new(order_params)
+    @order.total_payment = cart_total + shipping_cost
+    @order.customer_id = current_customer.id
+    @order.shipping_cost = shipping_cost
+    @order.save
+    @cart_items = current_customer.cart_items
+    @cart_items.each do |cart_item|
+      @order_detail = OrderDetail.new
+      @order_detail.order_id = @order.id
+      @order_detail.item_id = cart_item.item_id
+      @order_detail.tax_price = cart_item.cart_tax_price
+      @order_detail.amount = cart_item.amount
+      @order_detail.save
+    end
+    current_customer.cart_items.destroy_all
+    redirect_to orders_complete_path
   end
 
   def complete
