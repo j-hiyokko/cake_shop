@@ -1,11 +1,13 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-9" >
-      <h2>注文履歴詳細</h2>
-        <table>
+<div class = "ml-5 mt-5 mr-5">
+  <div>
+    <h5 class = "text-center", style = "background-color:#eee; width:150px; margin-left:100px; font-weight:bold;">注文履歴詳細</h5>
+    <table class = "table table-borderless">
+      <tbody>
         <tr>
-          <th>購入者</th>
-          <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
+          <td style="width: 10%"><b>購入者</b></td>
+          <td style="width: 50%">
+          　　<%= @order.customer.last_name %><%= @order.customer.first_name %>
+          </td>
          </tr>
         <tr>
           <th>注文日</th>
@@ -23,12 +25,13 @@
         </tr>
         <tr>
           <th>注文ステータス</th>
-         <td><%= form_with(model: @order, url: admin_order_path, local: true, class: "form-row") do |f| %>
+         <td><%= form_with model: @order, url: admin_order_path(@order),class: "form-row",method: :patch do |f| %>
             <%= f.select :order_status, Order.order_statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6"  %>
             <%= f.submit "更新" %>
 　　        <% end %>
 　　      </td>
         </tr>
+        </tbody>
       </table>
       <table class='table table-hover table-inverse'>
         <thead>
