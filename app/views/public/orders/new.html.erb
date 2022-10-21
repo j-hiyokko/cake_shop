@@ -9,11 +9,7 @@
             <td>
               <div class="radio">
                 <p>
-                  <%= f.radio_button :payment, :クレジットカード,checked: true %>
-                  <label class="payment-label">クレジットカード</label>
-                <br>
-                  <%= f.radio_button :payment, :銀行振込 %>
-                  <label class="payment-label">銀行振込</label>
+                  <%= f.collection_radio_buttons :payment,Order.payments_i18n,:first,:last,class: 'form-control' %>
                 </p>
               </div>
             </td>

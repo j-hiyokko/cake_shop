@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
       new_admin_session_path
     else
       root_path
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/develop
     end
   end
 
