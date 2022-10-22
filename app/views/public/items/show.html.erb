@@ -1,7 +1,7 @@
  <div class="container">
-  <div class="row align-items-center">
+  <div class="row">
 
-    <div class='col-md-2'>
+    <div class='col-md-2 py-5'>
       <div class="card">
         <div class="card-body">
           <p class="card-title">ジャンル検索</p>
@@ -12,22 +12,29 @@
       </div>
     </div>
 
-    <div class='col-md-4 offset-2 py-5'>
-      <%= image_tag @item.get_item_image,size: "350x300",class:"img-thumbnail" %>
-    </div>
-    <div class='col-md-3'>
-      <%= @item.item_name %><br>
-      <%= @item.introduction %><br>
-      ¥<%= @item.add_tax_price.to_s(:delimited) %>(税込)
+    <div class='col-md-10 py-3'>
+      <div class="row align-items-center">
+        <div class='col-md-6 px-5 py-5'>
+          <%= image_tag @item.get_item_image,size: "400x350",class:"img-thumbnail" %>
+          </div>
 
-      <% if @item.item_status == "available" %>
-        <%= form_with model:@cart_items do |f| %>
-        <%= f.hidden_field :item_id,:value => @item.id %>
-        <%= f.select :quantity,*[1..10],prompt:'個数選択' %>
-        <%= f.submit :'カートに入れる',class:"btn btn-primary" %>
-        <% end %>
-      <% else %>
-        <p>販売停止中</p>
-      <% end %>
+          <div class='col-md-4'>
+            <h4><%= @item.item_name %></h4>
+            <p><%= @item.introduction %></p>
+            <p><span class="h4">¥<%= @item.add_tax_price.to_s(:delimited) %></span>(税込)</p>
 
+            <% if @item.item_status == "available" %>
+            <%= form_with model:@cart_items do |f| %>
+            <%= f.hidden_field :item_id,:value => @item.id %>
+            <%= f.select :quantity,*[1..10],prompt:'個数選択' %>
+            <span class="px-3"><%= f.submit :'カートに入れる',class:"btn btn-primary" %></span>
+            <% end %>
+            <% else %>
+            <p>販売停止中</p>
+            <% end %>
+          </div>
+
+      </div>
     </div>
+  </div>
+</div>
