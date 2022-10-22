@@ -7,49 +7,42 @@
     <%= render "public/shared/error_messages", resource: resource %>
 
     <div class="field">
-      <%= f.label :name, "名前", class: "col-2" %>
-      <%= f.label :last_name, "(姓)", class: "col-xs-1" %>
+      <%= f.label :name, "名前", class: "col-3" %>
       <%= f.text_field :last_name, class:"col-3", placeholder:"令和", autofocus: true, autocomplete: "last_name" %>
-      <%= f.label :first_name, "(名)", class: "col-xs-1 offset-1" %>
       <%= f.text_field :first_name, class:"col-3", placeholder:"道子", autofocus: true, autocomplete: "first_name" %>
     </div>
     <div class="field">
-      <%= f.label :name, "フリガナ", class: "col-2" %>
-      <%= f.label :last_name_kana, "(セイ)", class: "col-xs-1" %>
+      <%= f.label :name, "フリガナ", class: "col-3" %>
       <%= f.text_field :last_name_kana, class:"col-3", placeholder:"レイワ", autofocus: true, autocomplete: "last_name_kana" %>
-      <%= f.label :first_name_kana, "(メイ)", class: "col-xs-1 offset-1" %>
       <%= f.text_field :first_name_kana, class:"col-3", placeholder:"ミチコ", autofocus: true, autocomplete: "first_name_kana" %>
     </div>
   <div class="field">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, class:"form-control", placeholder:"sample@example.com", autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, "メールアドレス", class: "col-3" %>
+    <%= f.email_field :email, class:"col-md-5", placeholder:"sample@example.com", autofocus: true, autocomplete: "email" %>
   </div>
   <div class="field">
-    <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
-    <%= f.text_field :postcode, class:"form-control", placeholder:"0000000", autofocus: true, autocomplete: "postcode" %>
+    <%= f.label :postcode, "郵便番号(ハイフンなし)", class: "col-3" %>
+    <%= f.text_field :postcode, class:"col-md-3", placeholder:"0000000", autofocus: true, autocomplete: "postcode" %>
   </div>
   <div class="field">
-    <%= f.label :address, "住所" %>
-    <%= f.text_field :address, class:"form-control", placeholder:"東京都渋谷区代々木神園町0-0", autofocus: true, autocomplete: "address" %>
+    <%= f.label :address, "住所", class: "col-3" %>
+    <%= f.text_field :address, class:"col-md-5", placeholder:"東京都渋谷区代々木神園町0-0", autofocus: true, autocomplete: "address" %>
   </div>
   <div class="field">
-    <%= f.label :phonenumber, "電話番号(ハイフンなし)" %>
-    <%= f.telephone_field :phonenumber, class:"form-control", placeholder:"0000000000", autofocus: true, autocomplete: "postcode" %>
+    <%= f.label :phonenumber, "電話番号(ハイフンなし)", class: "col-3" %>
+    <%= f.telephone_field :phonenumber, class:"col-md-3", placeholder:"0000000000", autofocus: true, autocomplete: "postcode" %>
   </div>
   <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <% if @minimum_password_length %>
-    (<%= @minimum_password_length %>文字以上)
-    <% end %>
-    <%= f.password_field :password, class:"form-control", autocomplete: "new-password" %>
+    <%= f.label :password, "パスワード(6文字以上)", class: "col-3" %>
+    <%= f.password_field :password, class:"col-md-3", autocomplete: "new-password" %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation, "パスワード(確認用)" %>
-    <%= f.password_field :password_confirmation, class:"form-control", autocomplete: "new-password" %>
+    <%= f.label :password_confirmation, "パスワード(確認用)", class: "col-3" %>
+    <%= f.password_field :password_confirmation, class:"col-md-3", autocomplete: "new-password" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "新規登録", class: 'btn btn-success' %>
+    <%= f.submit "新規登録", class: 'btn btn-success col-md-3 offset-3' %>
   </div>
 <% end %>
     </div>
