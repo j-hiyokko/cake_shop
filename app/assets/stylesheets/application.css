@@ -13,7 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
 nav {
   background: url("IMG_0966.jpg") no-repeat left center;
   background-size: cover;
+}
+
+footer {
+  width: 100%;
 }

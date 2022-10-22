@@ -1,4 +1,4 @@
-<div class="container px-5 px-sm-0">
+<div class="container">
   <div class="row">
     <div class="col-md-3">
       <div class="card">
@@ -13,14 +13,15 @@
       </div>
     </div>
 
-    <div class="col-md-5 offset-md-1">
+    <div class="col-md-6 offset-md-1">
       <div class="card">
-        <div class="card-body text-center">
+        <div class="card-body">
           ようこそ、ながのCAKEへ！<br>
           このサイトは、ケーキ販売のECサイトになります。<br>
           会員ではない方も商品の閲覧はできますが、<br>
           購入には会員登録が必要になります。
         </div>
+        <%= image_tag'cookie.jpg' %>
       </div>
     </div>
   </div>
@@ -40,7 +41,8 @@
               </div>
             <% end %>
           </div>
-        <%= link_to "すべての商品を見る＞", items_path %>
+        </div>
+      <div class="col-md-10 offset-8">
+        <%= link_to "すべての商品を見る", items_path, class:"btn btn-outline-info btn-sm" %>
       </div>
   </div>
-</div>
