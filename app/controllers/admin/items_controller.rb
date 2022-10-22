@@ -6,14 +6,14 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
-    @genre = Genre.all
     @item = Item.new
+    @genre = Genre.all
   end
 
   def create
     @genre = Genre.all
     @item = Item.new(item_params)
-    if @item.save
+    if @item.save!
       redirect_to admin_item_path(@item.id)
     else
       render:new
