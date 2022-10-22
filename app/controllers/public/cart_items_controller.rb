@@ -7,7 +7,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    if cart_item = CartItem.find_by(item_id:cart_item_params[:item_id])
+    if cart_item = current_customer.cart_items.find_by(item_id:cart_item_params[:item_id])
       cart_item.quantity += cart_item_params[:quantity].to_i
       # <cart_item.quantity = cart_item.quantity + cart_item_params[:quantity].to_i>
       cart_item.save
