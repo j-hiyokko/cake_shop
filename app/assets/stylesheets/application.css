@@ -13,10 +13,7 @@
  *= require_tree .
  *= require_self
  */
-
-footer{
-  width: 100%;
-  text-align: center;
-  position: absolute;/*←絶対位置*/
-  bottom: 0; /*下に固定*/
+nav {
+  background: url("header_cake.jpg") no-repeat left center;
+  background-size: cover;
 }
