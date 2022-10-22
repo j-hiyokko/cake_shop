@@ -1,14 +1,10 @@
 class Item < ApplicationRecord
 
-  belongs_to:order
-  belongs_to:genre
+  belongs_to:order,optional: true
+  belongs_to:genre,optional: true
   has_many:cart_items,dependent: :destroy
 
-  validates :genre_id, presence: true
-  validates :item_name, presence: true
-  validates :price, presence: true
-  validates :introduction, presence: true
-  validates :item_status, presence: true
+  validates:item_name,:introduction,:price,:genre_id,:item_status,presence:true
 
   has_one_attached :item_image
 
