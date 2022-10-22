@@ -23,4 +23,6 @@ class Customer < ApplicationRecord
   validates :phonenumber, uniqueness: true, format: { with: /\A\d{10,11}\z/ }
   validates :postcode, format: {with: /\A\d{7}\z/}, numericality: { only_integer: true }
 
+  validates :address, presence: true
+
 end
