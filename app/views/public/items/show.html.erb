@@ -1,17 +1,23 @@
- <div class="container px-5 px-sm-0">
-  <div class="row">
+ <div class="container">
+  <div class="row align-items-center">
 
-    <div class='col-md-3'>
-      <p>ジャンル検索</p>
-      <% @genres.each do |genre| %>
-      <%= genre.genre_name %><br>
-      <% end %>
+    <div class='col-md-2'>
+      <div class="card">
+        <div class="card-body">
+          <p class="card-title">ジャンル検索</p>
+            <% @genres.each do |genre| %>
+            <p class="card-text"><%= genre.genre_name %><br></p>
+            <% end %>
+        </div>
+      </div>
     </div>
 
-    <div class='col-md-9'>
-      <%= image_tag @item.get_item_image,size: "300x250" %>
-      <%= @item.item_name %>
-      <%= @item.introduction %>
+    <div class='col-md-4 offset-2 py-5'>
+      <%= image_tag @item.get_item_image,size: "350x300",class:"img-thumbnail" %>
+    </div>
+    <div class='col-md-3'>
+      <%= @item.item_name %><br>
+      <%= @item.introduction %><br>
       ¥<%= @item.add_tax_price.to_s(:delimited) %>(税込)
 
       <% if @item.item_status == "available" %>
@@ -25,4 +31,3 @@
       <% end %>
 
     </div>
-    
