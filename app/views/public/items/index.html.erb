@@ -1,35 +1,38 @@
-<div class="container px-5 px-sm-0">
+<div class="container">
   <div class="row">
 
-    <div class='col-md-3'>
+    <div class='col-md-2 py-5'>
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">ジャンル検索</h4>
+          <p class="card-title">ジャンル検索</p>
             <% @genres.each do |genre| %>
-            <p class="card-text">
-            <%= genre.genre_name %><br>
-            </p>
+            <p class="card-text"><%= genre.genre_name %><br></p>
             <% end %>
         </div>
       </div>
     </div>
 
-    <div class='col-md-9'>
-      <h3>商品一覧</h3><p>(全<%= @allitems.count %>件)</p>
+      <div class='col-md-9 offset-1 py-3'>
+        <div class="row">
+          <p>
+            <span class="lead bg-light">商品一覧</span>
+            (全<%= @allitems.count %>件)
+          </p>
+        </div>
 
-      <div class="row">
+      <div class="row align-items-center">
         <% @items.each do |item| %>
           <div class='col-md-3'>
             <%= link_to item_path(item.id) do %>
-            <%= image_tag item.get_item_image,size: "250x200",class:'img-fluid' %>
+            <%= image_tag item.get_item_image,size: "200x150",class:"img-thumbnail"%>
             <% end %><br>
             <%= item.item_name %><br>
             ¥<%= item.add_tax_price.to_s(:delimited) %>
           </div>
         <% end %>
-        <div><%= paginate @items %></div>
+        </div>
+        <div class="row align-items-center"><%= paginate @items %></div>
       </div>
-    </div>
 
   </div>
 </div>
