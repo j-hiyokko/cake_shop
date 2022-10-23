@@ -10,15 +10,18 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @order_items = @order.order_items
     @order.update(order_params)
-  redirect_to admin_order_path(@order)
+    if @order.order_status == "payment_confirmation"
+       @order.order_details.update_all(product_status: 1)
+    end
+    redirect_to request.referer
   end
+
 
   private
 
   def order_params
-    params.require(:order).permit(:status)
+    params.require(:order).permit(:order_status)
   end
 
 
