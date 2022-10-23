@@ -14,17 +14,19 @@
  *= require_self
  */
 
+body{
+  padding-bottom: 70px;
+  /*position: relative;*/
+}
+
 nav {
   background: url("header.jpg") no-repeat left center;
   background-size: cover;
 }
 
-body{
-  padding-bottom: 70px;
-}
 
 footer {
   width: 100%;
   /*position: absolute;*/
-  /*bottom: 0;*/
+  bottom: 0;
 }
