@@ -13,6 +13,7 @@ class Public::AddressesController < ApplicationController
       flash[:notice] = '情報が追加されました'
       redirect_to action: :index
     else
+      @address = Address.new
       @addresses = current_customer.addresses
       render :index
     end
