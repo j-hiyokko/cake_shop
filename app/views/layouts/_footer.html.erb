@@ -1,22 +1,21 @@
-<footer class="border border-dark pt-4 pb-4">
+<footer class="fixed-bottom text-center text-white" style="background-color: #f2ebd1;">
   <div class="container">
-    <div class="row no-gutters">
-      <div class="col-5">
-        <p>ながのCAKE</p>
-      </div>
-      <div class="col-md-4">
-        <ul class="p-0 list-unstyled">
-          <li><a><i class="fa-brands fa-instagram"></i> instagram</a></li>
-        </ul>
-      </div>
-      <div class="col-md-2 offset-1">
-        <% if  admin_signed_in? %>
-          <p></p>
-        <% else %>
-          <%= link_to "管理者", new_admin_session_path, class: "btn btn-outline-light" %>
-         <% end %>
-        </li>
-      </div>
-    </div>
+    <section class="mb-2">
+      <a
+        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        href="https://www.instagram.com/"
+        role="button"
+        data-mdb-ripple-color="dark">
+        <i class="fab fa-instagram"></i> instagram
+      </a>
+    </section>
+  </div>
+  <div class="text-center text-dark p-1" style="background-color: rgba(0, 0, 0, 0.2);">
+    <a class="text-dark" href="https://mdbootstrap.com/">© ながのCAKE</a>
+    <% if  admin_signed_in? %>
+      <p></p>
+    <% else %>
+      <%= link_to "管理者", new_admin_session_path, class: "btn btn-outline-light" %>
+    <% end %>
   </div>
 </footer>
