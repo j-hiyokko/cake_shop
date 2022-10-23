@@ -47,18 +47,15 @@
         </table>
       </div>
     </div>
-
-
-<div class = "mt-5 ml-auto mr-auto", style = "width:250px;">
-
-<%= form_with model: @order, url: orders_path, method: :post do |f| %>
-<%= f.hidden_field :postcode,:value => @order.postcode %>
-<%= f.hidden_field :address,:value => @order.address %>
-<%= f.hidden_field :address_name,:value => @order.address_name %>
-<%= f.hidden_field :postage,:value => 800 %>
-<%= f.hidden_field :payment,:value => @order.payment %>
-<%= f.hidden_field :total_price,:value => @subtotal +800 %>
-<%= f.hidden_field :billing_amount,:value =>@order.billing_amount %>
+  <div class = "mt-5 ml-auto mr-auto", style = "width:250px;">
+    <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+    <%= f.hidden_field :postcode,:value => @order.postcode %>
+    <%= f.hidden_field :address,:value => @order.address %>
+    <%= f.hidden_field :address_name,:value => @order.address_name %>
+    <%= f.hidden_field :postage,:value => 800 %>
+    <%= f.hidden_field :payment,:value => @order.payment %>
+    <%= f.hidden_field :total_price,:value => @subtotal +800 %>
+    <%= f.hidden_field :billing_amount,:value =>@order.billing_amount %>
 <%= f.submit "注文を確定する", class:"btn btn-success " %>
 <% end %>
 </div>

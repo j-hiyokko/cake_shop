@@ -10,7 +10,7 @@ class Admin::OrderDetailesController < ApplicationController
       if @order.order_details.all?{|order_detail| order_detail.product_status == "製作完了"}
         @order.update(order_status: "発送準備中")
       end
-      redirect_to admin_order_path(@order_detail.order)
+      redirect_to request.referer
     else
       render admin_order_path
     end
