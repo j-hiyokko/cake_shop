@@ -1,9 +1,16 @@
 <div class="container mt-3">
   <div class="row">
-    <h3>
-      <span class="lead bg-light">商品一覧</span>
-      (全<%= @genres.count %>件)
-    </h3>
+    <h3>商品一覧 (全<%= @genre.items.count %>件)</h3>
   </div>
-  
+  <div class="row align-items-center mt-3">
+    <% @genre.items.each do |item| %>
+    <div class="col-md-3">
+      <%= link_to item_path(item.id) do %>
+      <%= image_tag item.get_item_image, size: "200x150", class:"img-thumbnail" %>
+      <% end %><br>
+      <%= item.item_name %><br>
+      ¥<%= item.add_tax_price.to_s(:delimited) %>
+    </div>
+    <% end %>
+  </div>
 </div>
