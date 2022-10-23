@@ -15,15 +15,16 @@
  */
 
 nav {
-  background: url("IMG_0966.jpg") no-repeat left center;
+  background: url("header.jpg") no-repeat left center;
   background-size: cover;
 }
 
 body{
-  padding-bottom:110px;
+  padding-bottom: 70px;
 }
 
 footer {
   width: 100%;
+  /*position: absolute;*/
   /*bottom: 0;*/
 }
