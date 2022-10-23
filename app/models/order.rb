@@ -10,7 +10,7 @@ class Order < ApplicationRecord
 
 
 
-  enum payment:{ credit_card: 0,transfer: 1}
+  enum payment:{ credit_card: 1,transfer: 0}
 
 
   enum order_status:{ waiting_for_payment:0,payment_confirmation:1,under_construction:2,shipping_preparation:3,sent:4}
@@ -20,5 +20,6 @@ class Order < ApplicationRecord
   def add_tax
     (item.price * 1.08).round
   end
+
 
 end

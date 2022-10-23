@@ -7,7 +7,7 @@ ja:
 
 
     order_detail:
-      order_status:
+      product_status:
         waiting_for_production: "着手不可"
         paid_up: "製作待ち"
         in_production: "製作中"
