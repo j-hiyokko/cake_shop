@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'genres/show'
+  end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -31,6 +34,7 @@ scope module: :public do
   get 'orders/complete'=>'orders#complete',as: 'complete_order'
   resources :orders, only: [:new,:create,:index,:show]
   resources :addresses, only: [:index,:edit,:create,:update,:destroy]
+  resources :genres, only:[:show]
 end
 
 namespace :admin do
