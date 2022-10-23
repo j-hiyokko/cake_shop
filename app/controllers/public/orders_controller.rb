@@ -1,8 +1,6 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
-    @customer = Customer.find(current_customer.id)
-    @addresses = @customer.addresses
   end
 
   def confirm
@@ -15,7 +13,7 @@ class Public::OrdersController < ApplicationController
       @order.postcode = current_customer.postcode
       @order.address_name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:address_option] == "1"
-      ship = Address.find(params[:order][:customer_id])
+      ship = Address.find(params[:order][:address_id])
       @order.address = ship.postcode
       @order.postcode = ship.address
       @order.address_name = ship.address_name
@@ -31,7 +29,17 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
+    @cart_items = current_customer.cart_items
     @order.save
+      @cart_items.each do |cart_item|
+        @order_detail = OrderDetail.new #初期化宣言
+        @order_detail.item_id = cart_item.item_id #商品idを注文商品idに代入
+        @order_detail.order_id =  @order.id #注文商品に注文idを紐付け
+        @order_detail.order_quantity = cart_item.quantity #商品の個数を注文商品の個数に代入
+        @order_detail.total_amount = cart_item.quantity.to_i*cart_item.item.price.to_i
+        @order_detail.save #注文商品を保存
+      end
+    current_customer.cart_items.destroy_all
     redirect_to complete_order_path
   end
 
@@ -46,6 +54,8 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment,:postcode,:address,:address_name,:customer_id,:billing_amount,:order_status,:postage,:image)
+    params.require(:order).permit(:payment,:postcode,:address,:address_name,:customer_id,:billing_amount,:order_status,:postage)
   end
+
+
 end

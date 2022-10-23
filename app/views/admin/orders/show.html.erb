@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-9" >
+    <div class="col-ml-9" >
       <h2>注文履歴詳細</h2>
         <table>
         <tr>
@@ -13,52 +13,63 @@
         </tr>
         <tr>
           <th>配送先</th>
-          <td>〒<%= @order.postcode %><%= @order.address %><br>
-              <%= @order.address_name %>
-          </td>
+          <td>〒<%= @order.postcode %><%= @order.address %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= @order.address_name %></td>
         </tr>
         <tr>
           <th>支払方法</th>
-          <td><%= @order.payment %></td>
+          <td><%= @order.payment_i18n %></td>
         </tr>
         <tr>
           <th>注文ステータス</th>
-         <td><%= form_with(model: @order, url: admin_order_path, local: true, class: "form-row") do |f| %>
-            <%= f.select :order_status, Order.order_statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6"  %>
+         <td>
+            <%= form_with model: @order, url: admin_order_path(@order.id),class: "form-row" ,method: :patch do |f| %>
+            <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
             <%= f.submit "更新" %>
-　　        <% end %>
-　　      </td>
+            <% end %>
+    </td>
         </tr>
       </table>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
+            <th>商品名</th>
             <th>単価（税込）</th>
             <th>数量</th>
             <th>小計</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <% @order_details.each do |order_detail| %>
-            <tr>
-              <td><%= order_detail.price %></td>
-              <td><%= order_detail.order_quantity %></td>
-              <td><%= order_detail.price*order.order_quantity %></td>
-              <%= form_with model: order_detail, url: admin_order_detaile(order_detail), local: true do |f| %>
-                <td><%= f.select :product_status, OrderDetail.product_statuses_i18n.invert, {prompt: false} %></td>
-                <td><%= f.submit "更新", class: "btn btn-success" %></td>
+         <% @order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.item_name %></td>
+            <td><%= order_detail.item.add_tax_price %> 円</td>
+            <td><%= order_detail.order_quantity %> 個</td>
+            <td><%= (order_detail.item.add_tax_price * order_detail.order_quantity).to_s(:delimited) %> 円</td>
+            <td>
+              <%= form_with model: order_detail, url: admin_order_detaile_path(order_detail.id), method: :patch do |f| %>
+                <%= f.hidden_field :order_detail_id, value: order_detail.id %>
+                <%= f.select :product_status, OrderDetail.product_statuses.keys.map {|k| [I18n.t("enums.order_detail.product_status.#{k}"), k]} %>
+                <%= f.submit "更新", class:"btn btn-success rounded-pill" %>
               <% end %>
-            </tr>
+            </td>
+          </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-    <div class="col-lg-3" >
-      <div class=".position-absolute.bottom-0.end-0">
+    </div>
+    </div>
+    <div class="absolute_test">
+      <table></table>
+        <h4>商品合計<%= @order.billing_amount-@order.postage %> 円</h4>
         <h4>送料<%= @order.postage %>円</h4>
         <h4>請求金額<%= @order.billing_amount %>円</h4>
-      </div>
-    </div>
+      </table>
   </div>
 
 
