@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :public do
+    get 'searches/search'
+  end
+  namespace :public do
     get 'genres/show'
   end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
@@ -35,6 +38,7 @@ scope module: :public do
   resources :orders, only: [:new,:create,:index,:show]
   resources :addresses, only: [:index,:edit,:create,:update,:destroy]
   resources :genres, only:[:show]
+  get "search" => "searches#search"
 end
 
 namespace :admin do
