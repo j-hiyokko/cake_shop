@@ -1,6 +1,5 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark p-4">
-    <div class="container">
       <a class="navbar-brand" href="/"><span>NaganoCake</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -34,6 +33,9 @@
               ログアウト
             <% end %>
           </li>
+          <li>
+            <%= render 'admin/searches/search_form' %>
+          </li>
           <!--会員ログインしたら？-->
         <% elsif customer_signed_in? %>
           <li>
@@ -55,6 +57,9 @@
             <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-light' do %>
               ログアウト
             <% end %>
+          </li>
+          <li>
+            <%= render 'public/searches/search_form' %>
           </li>
           <!--ログインしてなかったら？-->
         <% else %>
@@ -78,9 +83,11 @@
                ログイン
             <% end %>
           </li>
+          <li>
+            <%= render 'public/searches/search_form' %>
+          </li>
         <% end %>
         </ul>
       </div>
-    </div>
   </nav>
 </header>

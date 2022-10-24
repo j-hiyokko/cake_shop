@@ -20,6 +20,10 @@ class Item < ApplicationRecord
     (price * 1.08).floor
   end
 
+  def self.looks(search, word)
+    where("item_name LIKE?","%#{word}%")
+  end
+
   enum item_status: { available:1,unavailable:0 }
 
 end
