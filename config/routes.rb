@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'searches/search'
+  end
+  namespace :public do
+    get 'searches/search'
+  end
+  namespace :public do
+    get 'genres/show'
+  end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -31,6 +40,8 @@ scope module: :public do
   get 'orders/complete'=>'orders#complete',as: 'complete_order'
   resources :orders, only: [:new,:create,:index,:show]
   resources :addresses, only: [:index,:edit,:create,:update,:destroy]
+  resources :genres, only:[:show]
+  get "search" => "searches#search"
 end
 
 namespace :admin do
@@ -40,6 +51,7 @@ namespace :admin do
   resources :customers, only: [:index,:show,:edit,:update]
   resources :orders, only: [:show,:update,:index]
   resources :order_detailes, only: [:update]
+  get "search" => "searches#search"
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
