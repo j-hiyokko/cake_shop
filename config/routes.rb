@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'searches/search'
+  end
   namespace :public do
     get 'searches/search'
   end
@@ -48,6 +51,7 @@ namespace :admin do
   resources :customers, only: [:index,:show,:edit,:update]
   resources :orders, only: [:show,:update,:index]
   resources :order_detailes, only: [:update]
+  get "search" => "searches#search"
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

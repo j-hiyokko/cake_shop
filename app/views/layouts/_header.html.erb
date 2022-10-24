@@ -33,6 +33,9 @@
               ログアウト
             <% end %>
           </li>
+          <li>
+            <%= render 'admin/searches/search_form' %>
+          </li>
           <!--会員ログインしたら？-->
         <% elsif customer_signed_in? %>
           <li>
@@ -54,6 +57,9 @@
             <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-light' do %>
               ログアウト
             <% end %>
+          </li>
+          <li>
+            <%= render 'public/searches/search_form' %>
           </li>
           <!--ログインしてなかったら？-->
         <% else %>
@@ -77,11 +83,11 @@
                ログイン
             <% end %>
           </li>
+          <li>
+            <%= render 'public/searches/search_form' %>
+          </li>
         <% end %>
         </ul>
-      </div>
-      <div class="search-form">
-        <%= render 'public/searches/search_form' %>
       </div>
   </nav>
 </header>
