@@ -28,35 +28,32 @@
         </tbody>
       </table>
     </div>
-
       <div class="col-md-5">
         <h3>　　　　　</h3>
         <table class="table">
           <tbody>
-              <% @order.postage = 800 %>
-                <tr><th class="table-secondary">送料</th><td><%= @order.postage %></td></tr>
+            <% @order.postage = 800 %>
+            <tr><th class="table-secondary">送料</th><td><%= @order.postage %></td></tr>
             <tr>
               <tr><th class="table-secondary">商品合計</th><td><%= @subtotal.round.to_s(:delimited) %></td></tr>
             </tr>
             <tr>
               <% @order.billing_amount = @order.postage.to_i + @subtotal.to_i %>
-                <tr><th class="table-secondary">請求金額</th><td><%= @order.billing_amount.round.to_s(:delimited) %></td></tr>
-            </table>
+              <tr><th class="table-secondary">請求金額</th><td><%= @order.billing_amount.round.to_s(:delimited) %></td></tr>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-  <div class = "mt-5 ml-auto mr-auto", style = "width:250px;">
-    <%= form_with model: @order, url: orders_path, method: :post do |f| %>
-    <%= f.hidden_field :postcode,:value => @order.postcode %>
-    <%= f.hidden_field :address,:value => @order.address %>
-    <%= f.hidden_field :address_name,:value => @order.address_name %>
-    <%= f.hidden_field :postage,:value => 800 %>
-    <%= f.hidden_field :payment,:value => @order.payment %>
-    <%= f.hidden_field :total_price,:value => @subtotal +800 %>
-    <%= f.hidden_field :billing_amount,:value =>@order.billing_amount %>
-<%= f.submit "注文を確定する", class:"btn btn-success " %>
-<% end %>
-</div>
+    <div class = "mt-5 ml-auto mr-auto", style = "width:250px;">
+      <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+        <%= f.hidden_field :postcode,:value => @order.postcode %>
+        <%= f.hidden_field :address,:value => @order.address %>
+        <%= f.hidden_field :address_name,:value => @order.address_name %>
+        <%= f.hidden_field :postage,:value => 800 %>
+        <%= f.hidden_field :payment,:value => @order.payment %>
+        <%= f.hidden_field :billing_amount,:value =>@order.billing_amount %>
+      <%= f.submit "注文を確定する", class:"btn btn-outline-info btn-sm " %>
+    <% end %>
+  </div>
 </div>

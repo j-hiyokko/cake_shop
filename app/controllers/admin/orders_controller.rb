@@ -1,4 +1,6 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @orders = Order.all
   end
@@ -14,6 +16,7 @@ class Admin::OrdersController < ApplicationController
     if @order.order_status == "payment_confirmation"
        @order.order_details.update_all(product_status: 1)
     end
+    
     redirect_to request.referer
   end
 
