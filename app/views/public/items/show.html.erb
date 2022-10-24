@@ -2,14 +2,7 @@
   <div class="row">
 
     <div class='col-md-2 py-5'>
-      <div class="card">
-        <div class="card-body">
-          <p class="card-title">ジャンル検索</p>
-            <% @genres.each do |genre| %>
-            <p class="card-text"><%= genre.genre_name %><br></p>
-            <% end %>
-        </div>
-      </div>
+      <%= render  "public/items/sidebar", genres: @genres %>
     </div>
 
     <div class='col-md-10 py-3'>
@@ -27,7 +20,7 @@
             <%= form_with model:@cart_items do |f| %>
             <%= f.hidden_field :item_id,:value => @item.id %>
             <%= f.select :quantity,*[1..10],prompt:'個数選択' %>
-            <span class="px-3"><%= f.submit :'カートに入れる',class:"btn btn-primary" %></span>
+            <span class="px-3"><%= f.submit :'カートに入れる',class:"btn btn-outline-info" %></span>
             <% end %>
             <% else %>
             <p>販売停止中</p>
