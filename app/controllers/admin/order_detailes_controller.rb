@@ -17,6 +17,8 @@ class Admin::OrderDetailesController < ApplicationController
   end
 
   def index
+    @order_detail = Customer.find(params[:customer_id])
+    @order_details = @order_detail.orders
   end
 
 
