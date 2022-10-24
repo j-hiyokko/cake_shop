@@ -30,9 +30,8 @@
             ¥<%= item.add_tax_price.to_s(:delimited) %>
           </div>
         <% end %>
+          <div class="col-md-12 offset-4 py-3"><%= paginate @items %></div>
         </div>
-        <div class="row align-items-center"><%= paginate @items %></div>
-      </div>
 
   </div>
 </div>
