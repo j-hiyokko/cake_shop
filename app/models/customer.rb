@@ -10,7 +10,7 @@ class Customer < ApplicationRecord
 
   enum user_status: { false: 0, true: 1 }
 
-  with_options presence: true, format: { with:/\A[ぁ-んァ-ン一-龥]/ } do
+  with_options presence: true, format: { with:/\A[ぁ-んァ-ン一-龥]/, message: '日本語で入力してください' } do
     validates :first_name
     validates :last_name
   end
