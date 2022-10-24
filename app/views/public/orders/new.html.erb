@@ -6,10 +6,11 @@
         <tbody>
           <tr>
             <th scope="row">支払方法</th>
+            <%= flash[:danger] %>
             <td>
               <div class="radio">
                 <p>
-                  <%= f.radio_button :payment, Order.payments.key(0) %>
+                  <%= f.radio_button :payment, Order.payments.key(0),checked: true %>
                    <%= f.label :payment, Order.payments_i18n[:credit_card] %>
                    <%= f.radio_button :payment, Order.payments.key(1) %>
                    <%= f.label :payment, Order.payments_i18n[:transfer]%><br>

@@ -31,7 +31,7 @@ before_action :authenticate_customer!
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @cart_items = current_customer.cart_items
-    @order.save
+    if @order.save
       @cart_items.each do |cart_item|
         @order_detail = OrderDetail.new #初期化宣言
         @order_detail.item_id = cart_item.item_id #商品idを注文商品idに代入
@@ -40,8 +40,12 @@ before_action :authenticate_customer!
         @order_detail.total_amount = cart_item.quantity.to_i*cart_item.item.price.to_i
         @order_detail.save #注文商品を保存
       end
-    current_customer.cart_items.destroy_all
-    redirect_to complete_order_path
+        current_customer.cart_items.destroy_all
+        redirect_to complete_order_path
+    else
+      
+      render 'new'
+    end
   end
 
   def complete
