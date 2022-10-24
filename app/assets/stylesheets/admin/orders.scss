@@ -8,3 +8,10 @@
     right:  70px;                /* 右からの位置指定 */
     top:500px;                  /* 上からの位置指定 */
 }
+.absolute {
+    position:  absolute;        /* 要素の配置方法を指定 */
+    background-color: #FFF;     /* 背景色指定 */
+    padding:  20px;             /* 余白指定 */
+    right:  400px;                /* 右からの位置指定 */
+    top:120px;                  /* 上からの位置指定 */
+}
