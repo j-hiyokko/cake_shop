@@ -27,7 +27,7 @@
             <%= form_with model:@cart_items do |f| %>
             <%= f.hidden_field :item_id,:value => @item.id %>
             <%= f.select :quantity,*[1..10],prompt:'個数選択' %>
-            <span class="px-3"><%= f.submit :'カートに入れる',class:"btn btn-primary" %></span>
+            <span class="px-3"><%= f.submit :'カートに入れる',class:"btn btn-outline-info" %></span>
             <% end %>
             <% else %>
             <p>販売停止中</p>
