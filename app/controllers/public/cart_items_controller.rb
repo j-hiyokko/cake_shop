@@ -11,13 +11,14 @@ class Public::CartItemsController < ApplicationController
       cart_item.quantity += cart_item_params[:quantity].to_i
       # <cart_item.quantity = cart_item.quantity + cart_item_params[:quantity].to_i>
       cart_item.save
-    else
-      cart_item = CartItem.new(cart_item_params)
+      flash[:notice] = '同じ商品が追加されました'
+      redirect_to cart_items_path
+    else cart_item = CartItem.new(cart_item_params)
       cart_item.customer_id = current_customer.id
       cart_item.save
+      flash[:notice] = '商品が追加されました'
+      redirect_to cart_items_path
     end
-    flash[:notice] = '商品が追加されました'
-    redirect_to cart_items_path
   end
 
   def update
