@@ -1,3 +1,4 @@
+<div class="absolute_test">
 <div class="row">
   <h3>注文情報入力</h3>
   <div class="col-xs-6" style="margin-top: 50px;">
@@ -9,7 +10,7 @@
             <td>
               <div class="radio">
                 <p>
-                  <%= f.radio_button :payment, Order.payments.key(0) %>
+                  <%= f.radio_button :payment, Order.payments.key(0),checked: true %>
                    <%= f.label :payment, Order.payments_i18n[:credit_card] %>
                    <%= f.radio_button :payment, Order.payments.key(1) %>
                    <%= f.label :payment, Order.payments_i18n[:transfer]%><br>
@@ -23,8 +24,8 @@
               <div class="radio">
                 <%= f.radio_button :address_option, 0,checked: true %>
                 <%= f.label :address_option, "ご自身の住所" %>
-                <p><%= current_customer.postcode %><%= current_customer.address %></p>
-                <p><%= current_customer.last_name %><%= current_customer.first_name %></p>
+                　〒<%= current_customer.postcode %>　<%= current_customer.address %>
+                <p>　　　　　　　　<%= current_customer.last_name %><%= current_customer.first_name %></p>
               </div>
               <div class="radio">
                 <p>
@@ -36,7 +37,8 @@
               <div class="radio">
                 <p>
                   <%= f.radio_button :address_option, 2  %>
-                  <%= f.label :selected_address, "新しいお届け先"  %>
+                  <%= f.label :selected_address, "新しいお届け先"  %><br>
+                   <%= flash[:danger] %>
                 </p>
                 <tr>
                   <td><%= f.label :postcode, "郵便番号(ハイフンなし)" %></td>
@@ -55,9 +57,10 @@
           </tr>
         </tbody>
       </table>
-      <div class="col-xs-offset-5">
+      <div class = "mt-5 ml-auto mr-auto", style = "width:250px;">
         <%= f.submit "注文確認画面に進む", class:"btn btn-outline-info btn-sm" %>
       </div>
     <% end %>
   </div>
+</div>
 </div>
