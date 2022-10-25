@@ -12,6 +12,9 @@
           <%= image_tag'cookie.jpg' %>
           <div class="card-img-overlay">
             <p class="font-weight-bold text-white px-2 py-2" style="line-height:3rem">
+              <% if customer_signed_in? %>
+                <%= current_customer.last_name %>さん
+              <% end %>
               ようこそ、ながのCAKEへ！<br>
               このサイトは、ケーキ販売のECサイトになります。<br>
               会員ではない方も商品の閲覧はできますが、<br>
