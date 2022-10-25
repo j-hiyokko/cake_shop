@@ -16,7 +16,6 @@
 
 body{
   padding-bottom: 70px;
-  /*position: relative;*/
 }
 
 nav {
@@ -27,6 +26,5 @@ nav {
 
 footer {
   width: 100%;
-  /*position: absolute;*/
   bottom: 0;
 }
