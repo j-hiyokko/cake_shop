@@ -14,6 +14,7 @@
     <%= render 'layouts/header' %>
   <body>
     <p id="notice"><%= notice %></p>
+    
     <%= yield %>
   </body>
 
@@ -28,11 +29,6 @@
         data-mdb-ripple-color="dark">
         <i class="fab fa-instagram"></i> instagram
       </a>
-      <% if  admin_signed_in? %>
-      <p></p>
-    <% else %>
-      <%= link_to "管理者", new_admin_session_path, class: "btn btn-outline-light" %>
-    <% end %>
     </section>
   </div>
 </footer>
