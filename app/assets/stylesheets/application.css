@@ -18,7 +18,7 @@ body{
   padding-bottom: 70px;
 }
 
-nav {
+header {
   background: url("header.jpg") no-repeat left center;
   background-size: cover;
 }
@@ -27,4 +27,8 @@ nav {
 footer {
   width: 100%;
   bottom: 0;
+}
+
+.pagination {
+  justify-content: center;
 }
