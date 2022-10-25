@@ -1,14 +1,14 @@
-<div class="container">
-  <div class="row">
-    <h3>会員一覧</h3>
+<div class="container px-5 py-4">
+  <div class="row align-items-center justify-content-between">
+    <h4 class="col-3">会員一覧</h4>
   </div>
 
-  <table class="table cart_products">
+  <table class="table table-hover table-inverse cart_products">
     <tr>
-      <th>会員ID</th>
-      <th>氏名</th>
-      <th>メールアドレス</th>
-      <th>ステータス</th>
+      <th class="table-secondary">会員ID</th>
+      <th class="table-secondary">氏名</th>
+      <th class="table-secondary">メールアドレス</th>
+      <th class="table-secondary">ステータス</th>
     </tr>
     <% @customers.each do |customer| %>
     <tr>
