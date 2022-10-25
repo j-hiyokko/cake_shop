@@ -43,7 +43,7 @@ before_action :authenticate_customer!
         current_customer.cart_items.destroy_all
         redirect_to complete_order_path
     else
-      
+      flash.now[:danger] = "※配送先を入力してください"
       render 'new'
     end
   end
@@ -54,7 +54,6 @@ before_action :authenticate_customer!
     @orders = Order.where(customer_id: current_customer.id)
   end
   def show
-    @order = Order.find(params[:id])
   end
 
   private

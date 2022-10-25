@@ -33,13 +33,13 @@
         <table class="table">
           <tbody>
             <% @order.postage = 800 %>
-            <tr><th class="table-secondary">送料</th><td><%= @order.postage %></td></tr>
+            <tr><th class="table">送料</th><td><%= @order.postage %></td></tr>
             <tr>
-              <tr><th class="table-secondary">商品合計</th><td><%= @subtotal.round.to_s(:delimited) %></td></tr>
+              <tr><th class="table">商品合計</th><td><%= @subtotal.round.to_s(:delimited) %></td></tr>
             </tr>
             <tr>
               <% @order.billing_amount = @order.postage.to_i + @subtotal.to_i %>
-              <tr><th class="table-secondary">請求金額</th><td><%= @order.billing_amount.round.to_s(:delimited) %></td></tr>
+              <tr><th class="table">請求金額</th><td><%= @order.billing_amount.round.to_s(:delimited) %></td></tr>
             </tr>
           </tbody>
         </table>
