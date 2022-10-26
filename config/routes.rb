@@ -1,14 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'searches/search'
-  end
-  namespace :public do
-    get 'searches/search'
-  end
-  namespace :public do
-    get 'genres/show'
-  end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
