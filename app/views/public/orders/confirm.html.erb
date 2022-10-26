@@ -24,7 +24,7 @@
       <table class="table">
         <tbody>
           <tr><th>支払い方法</th><td><%= @order.payment_i18n %></td></tr>
-          <tr></tr><th>お届け先</th><td><%= @order.address %><%= @order.postcode %><br><%= @order.address_name %></td></tr>
+          <tr></tr><th>お届け先</th><td>〒<%= @order.postcode %>　<%= @order.address %><br><%= @order.address_name %></td></tr>
         </tbody>
       </table>
     </div>

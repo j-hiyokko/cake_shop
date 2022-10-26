@@ -1,7 +1,6 @@
-<div class="absolute">
-  <div class="container">
+ <div class="container">
     <div class="row">
-      <div class="col-ml-9" >
+      <div class="col-ml-9 mt-sm-3 " >
         <h4>注文履歴詳細</h4>
           <table>
           <tr>
@@ -14,7 +13,7 @@
           </tr>
           <tr>
             <th>配送先</th>
-            <td>〒<%= @order.postcode %><%= @order.address %></td>
+            <td>〒<%= @order.postcode %>　<%= @order.address %></td>
           </tr>
           <tr>
             <th></th>
@@ -34,7 +33,7 @@
             </td>
           </tr>
         </table>
-        <table class='table table-hover table-inverse'>
+        <table class='table table-hover table-inverse mt-sm-4'>
           <thead>
             <tr>
               <th>商品名</th>
@@ -64,8 +63,7 @@
       </div>
     </div>
   </div>
-</div>
-<div class="absolute_test">
+<div class="absolute_test1">
     <h4>商品合計<%= (@order.billing_amount-@order.postage).to_s(:delimited) %> 円</h4>
     <h4>送料　　　   <%= @order.postage %>円</h4>
     <h4>請求金額 <%= @order.billing_amount.to_s(:delimited) %>円</h4>
