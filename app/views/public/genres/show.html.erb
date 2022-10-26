@@ -1,12 +1,11 @@
-<div class="container mt-3">
-  <div class="row">
+<div class="container">
+  <div class="row py-5">
 
-    <div class='col-md-2 py-5'>
+    <div class='col-md-2'>
       <%= render  "public/items/sidebar", genres: @genres %>
-
     </div>
 
-    <div class='col-md-9 offset-1 py-3'>
+    <div class='col-md-9 offset-1'>
       <div class="row">
         <p>
           <span class="h3"><%= @genre.genre_name %>一覧</span>
@@ -16,9 +15,9 @@
 
       <div class="row align-items-center">
         <% @genre.items.each do |item| %>
-        <div class="col-md-3">
+        <div class="col-md-3 mt-3">
           <%= link_to item_path(item.id) do %>
-          <%= image_tag item.get_item_image, size: "200x150", class:"img-thumbnail" %>
+          <%= image_tag item.get_item_image,size: "200x150", class:"img-thumbnail" %>
           <% end %><br>
           <%= item.item_name %><br>
           ¥<%= item.add_tax_price.to_s(:delimited) %>
