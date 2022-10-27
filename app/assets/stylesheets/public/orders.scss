@@ -1,0 +1,18 @@
+// Place all the styles related to the public/orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.absolute_test {
+    position:  absolute;        /* 要素の配置方法を指定 */
+    background-color: rgba(255, 255, 255, 0.562);    /* 背景色指定 */
+    padding:  10px;             /* 余白指定 */
+    right:  570px;                /* 右からの位置指定 */
+    top:95px;                  /* 上からの位置指定 */
+}
+
+.absolute {
+    position:  absolute;        /* 要素の配置方法を指定 */
+    background-color: rgba(255, 255, 255, 0.562);    /* 背景色指定 */
+    padding:  10px;             /* 余白指定 */
+    right:  50px;                /* 右からの位置指定 */
+    top:520px;                  /* 上からの位置指定 */
+}

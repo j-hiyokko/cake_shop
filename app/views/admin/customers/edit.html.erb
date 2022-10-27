@@ -1,0 +1,59 @@
+<div class="container py-4">
+  <div class="row mb-3">
+　　<h4>会員情報編集(<%= @customer.first_name %><%= @customer.last_name %>さん)</h4>
+　</div>
+
+  <div class="col">
+    <% if @customer.errors.any? %>
+      <div class="alert alert-warning">
+        <ul>
+          <% @customer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
+  <%= form_with model:@customer, url: admin_customer_path, method: :PATCH, local:true do |f| %>
+  <div class="form-group row">
+    <div class="col-md-3">会員ID</div>
+    <div class="col-md-2"><%= @customer.id %></div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :氏名, class: "col-md-3" %>
+    <%= f.text_field :last_name, class: "col-md-2 form-control" %>
+    <%= f.text_field :first_name, class: "col-md-2 form-control ml-3" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :フリガナ, class: "col-md-3" %>
+    <%= f.text_field :last_name_kana, class: "col-md-2 form-control" %>
+    <%= f.text_field :first_name_kana, class: "col-md-2 form-control ml-3" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :郵便番号, class: "col-md-3" %>
+    <%= f.text_field :postcode, class: "col-md-5 form-control" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :住所, class: "col-md-3" %>
+    <%= f.text_field :address, class: "col-md-5 form-control" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :電話番号, class: "col-md-3" %>
+    <%= f.text_field :phonenumber, class: "col-md-5 form-control" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :メールアドレス, class: "col-md-3" %>
+    <%= f.email_field :email, class: "col-md-5 form-control" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :会員ステータス, class: "col-md-3" %>
+    <label><%= f.radio_button :user_status?, "true", checked: "false" %>有効</label>
+    <label class="ml-3"><%= f.radio_button :user_status, "false" %>退会</label>
+  </div>
+
+  <div class="form-group row">
+    <%= f.submit "変更を保存", class: "btn btn-success col-md-2 offset-3" %>
+  </div>
+<% end %>
+</div>

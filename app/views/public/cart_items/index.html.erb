@@ -1,0 +1,62 @@
+<div class="container px-5 py-3">
+
+    <div class="row justify-content-between">
+        <div class="col-4">
+            <h3>ショッピングカート</h3>
+        </div>
+        <div class="col-2">
+            <%= button_to "カートを空にする",destroy_all_cart_items_path,method: :delete,class:"btn btn-outline-danger"%>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <table class='table table-hover table-inverse'>
+            <thead class="bg-light">
+                <tr>
+                    <th></th>
+                    <th>商品名</th>
+                    <th>単価(税込)</th>
+                    <th>数量</th>
+                    <th>小計</th>
+                    <th colspan="3"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% @cart_items.each do |cart_item| %>
+                <tr>
+                    <td><%= image_tag cart_item.item.get_item_image,size: "100x70" %></td>
+                    <td><%= cart_item.item.item_name %></td>
+                    <td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+                    <%= form_with model:cart_item do |f| %>
+                    <td>
+                        <%= f.select:quantity,*[1..10] %>
+                        <%= f.submit "変更",class:"btn btn-sm btn-outline-success" %>
+                    </td>
+                    <% end %>
+                    <td><%= cart_item.subtotal.round.to_s(:delimited) %></td>
+                    <td><%= button_to '削除する',cart_item_path(cart_item.id),method: :delete,class:"btn btn-sm btn-outline-danger" %>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+
+        <div class="row justify-content-between">
+            <div class="col-4"><%= link_to "買い物を続ける",root_path,class:"btn btn-outline-primary" %></div>
+            <table class="col-3 table-bordered text-center">
+                <tr>
+                    <td class="bg-light py-2"><span class="h4">合計金額</span></td>
+                    <td><strong class="h4">¥<%= @subtotal.round.to_s(:delimited) %></strong></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="row justify-content-center mt-3">
+            <% if @cart_items.blank? %>
+            <%= link_to "情報入力に進む",new_order_path,class:"btn btn-outline-success disabled" %>
+            <% else %>
+            <%= link_to "情報入力に進む",new_order_path,class:"btn btn-outline-success" %>
+            <% end %>
+        </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="container py-4">
+  <div class="row">
+    <h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table cart_items">
+        <tr>
+          <th style="width:30%">会員ID</th>
+          <td style="width:70%"><%= @customer.id %></td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.postcode %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @customer.phonenumber %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <% if @customer.user_status == "true" %>
+            <td>有効</td>
+          <% else @customer.user_status == "false" %>
+            <td>退会</td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5 clearfix">
+
+      <div class="float-right"><%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success" %></div>
+    </div>
+    <div class="col-md-7">
+      <%= link_to "注文履歴一覧を見る", admin_customer_order_detailes_path(@customer), class: "btn btn-primary" %>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,32 @@
+<div class="container px-5 py-4">
+  <div class="row align-items-center justify-content-between">
+    <h4 class="col-3">会員一覧</h4>
+  </div>
+
+  <table class="table table-hover table-inverse cart_products">
+    <tr>
+      <th class="table-secondary">会員ID</th>
+      <th class="table-secondary">氏名</th>
+      <th class="table-secondary">メールアドレス</th>
+      <th class="table-secondary">ステータス</th>
+    </tr>
+    <% @customers.each do |customer| %>
+    <tr>
+      <td><%= customer.id %></td>
+      <td>
+        <%= link_to admin_customer_path(customer) do %>
+          <%= customer.last_name %><%= customer.first_name %>
+        <% end %>
+      </td>
+      <td><%= customer.email %></td>
+
+      <% if customer.user_status == "true" %>
+        <td>有効</td>
+      <% else customer.user_status == "false" %>
+        <td>退会</td>
+      <% end %>
+    </tr>
+    <% end %>
+  </table>
+
+</div>

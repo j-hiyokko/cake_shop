@@ -1,0 +1,49 @@
+<div class="container px-5 py-3">
+    <div class="row align-items-center justify-content-between">
+
+        <div class="h4 col-3">商品一覧</div>
+            <div class="col-1">
+                <%= link_to new_admin_item_path do %>
+                <i class="fas fa-plus-circle fa-3x text-secondary" title="新規登録"></i>
+                <% end %>
+            </div>
+        </div>
+
+        <table class='table table-hover table-inverse mt-1'>
+            <thead>
+                <tr>
+                    <th class="table-secondary">商品ID</th>
+                    <th class="table-secondary">商品名</th>
+                    <th class="table-secondary">税抜価格</th>
+                    <th class="table-secondary">ジャンル</th>
+                    <th class="table-secondary">ステータス</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% @items.each do |item| %>
+                <tr>
+                    <td><%= item.id %></td>
+                    <td>
+                        <%= link_to admin_item_path(item.id) do %>
+                        <%= item.item_name %>
+                        <% end %>
+                    </td>
+                    <td><%= item.price.to_s(:delimited) %>円</td>
+                    <td><%= item.genre.genre_name %></td>
+                    <td>
+                        <% if item.item_status == "available" %>
+                        <p class="text-success"><%= item.item_status_i18n %></p>
+                        <% else %>
+                        <p class="text-black-50"><%= item.item_status_i18n %></p>
+                        <% end %>
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+
+        <%= paginate @items %>
+
+    </div>
+</div>

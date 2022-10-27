@@ -1,0 +1,43 @@
+<div class='container py-4'>
+
+    <div class='row offset-1'>
+        <h4>商品詳細</h4>
+    </div>
+
+    <div class='row mt-4'>
+        <div class='col-md-3 offset-1'>
+            <%= image_tag @item.get_item_image,size: "300x250" %>
+        </div>
+
+        <div class='col-md-7 offset-1'>
+            <div class="row">
+                <span class="col-4">商品名</span>
+                <span class="col-6"><%= @item.item_name %></span>
+            </div>
+            <div class="row mt-3">
+                <span class="col-4">商品説明</span>
+                <span class="col-6"><%= @item.introduction %></span>
+            </div>
+            <div class="row mt-3">
+                <span class="col-4">ジャンル</span>
+                <span class="col-6"><%= @item.genre.genre_name %></span>
+            </div>
+            <div class="row mt-3">
+                <span class="col-4">税込価格<br>(税抜価格)</span>
+                <span class="col-6 mt-3"><%= @item.add_tax_price.to_s(:delimited) %>(<%= @item.price %>)円</span>
+            </div>
+            <div class="row mt-3">
+                <span class="col-4">販売ステータス</span>
+                <% if @item.item_status == "available" %>
+                <span class="col-6 text-success"><%= @item.item_status_i18n %></span>
+                <% else %>
+                <span class="col-6 text-black-50"><%= @item.item_status_i18n %></span>
+                <% end %>
+            </div>
+            <div class="col-7 text-center mt-4">
+                <%= link_to "編集する",edit_admin_item_path,class:"btn btn-success" %>
+            </div>
+        </div>
+    </div>
+
+</div>

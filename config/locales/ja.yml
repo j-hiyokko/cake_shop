@@ -1,0 +1,32 @@
+ja:
+    enums:
+      item:
+        item_status:
+          available: "販売中"
+          unavailable: "販売停止中"
+
+
+      order_detail:
+        product_status:
+          waiting_for_production: "着手不可"
+          paid_up: "製作待ち"
+          in_production: "製作中"
+          production_completed: "製作完了"
+
+
+      order:
+        order_status:
+          waiting_for_payment: "入金待ち"
+          payment_confirmation: "入金確認"
+          under_construction: "製作中"
+          shipping_preparation: "発送準備中"
+          sent: "発送済み"
+
+        payment:
+          credit_card: "クレジットカード"
+          transfer: "銀行振込"
+
+      activerecord:
+      errors:
+        messages:
+          record_invalid: "%{errors}"

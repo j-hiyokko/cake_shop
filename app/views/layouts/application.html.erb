@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CakeShop</title>
+    <title>NaganoCake</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  </head>
+    <%= render 'layouts/header' %>
   <body>
+    <p id="notice"><%= notice %></p>
+    
     <%= yield %>
   </body>
+
+  <footer class="fixed-bottom text-center text-white" style="background-color: #f2ebd1;">
+  <div class="container">
+    <section class="mb-2">
+      <a class="text-dark">© ながのCAKE</a>
+      <a
+        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        href="https://www.instagram.com/"
+        role="button"
+        data-mdb-ripple-color="dark">
+        <i class="fab fa-instagram"></i> instagram
+      </a>
+    </section>
+  </div>
+</footer>
 </html>
