@@ -1,24 +1,16 @@
-# README
+# ながのCAKE
+  * 長野県にある小さな洋菓子店「ながのCAKE」の商品を販売するためのECサイトです。
+  * DMMWEBCAMPのチーム開発学習の為に制作しました。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## アプリケーションの説明・機能
+  * 顧客側は、商品の検索・閲覧、注文ができます。
+  * 管理者は、商品・ジャンルの登録、会員の管理ができます。
+  
+## 必要要件
+  * 商品購入には会員登録が必要
+  * ブラウザのみ対応
+  
+## 使い方
+  * 名前、メールアドレス、住所などを登録して、ログインできます。
+  * 商品の個数を選択し、支払い方法を選択後、購入が可能です。
+  * 任意の住所を登録して、配送先に設定する事ができます。
